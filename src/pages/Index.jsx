@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Button, Checkbox, Flex, Heading, Input, Text, VStack } from "@chakra-ui/react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -26,29 +27,32 @@ const TodoApp = () => {
   };
 
   return (
-    <Box maxW="md" mx="auto" mt={0}>
-      <Header />
-      <Flex mb={4}>
-        <Input placeholder="Add a new todo" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} mr={2} />
-        <Button colorScheme="blue" onClick={addTodo}>
-          Add
-        </Button>
-      </Flex>
-      <VStack spacing={2} align="start">
-        {todos.map((todo, index) => (
-          <Flex key={index} align="center" justify="space-between" w="full">
-            <Checkbox isChecked={todo.completed} onChange={() => toggleTodo(index)} mr={2}>
-              <Text as={todo.completed ? "del" : "span"} color={todo.completed ? "gray.500" : "inherit"}>
-                {todo.text}
-              </Text>
-            </Checkbox>
-            <Button size="sm" colorScheme="red" onClick={() => deleteTodo(index)}>
-              Delete
-            </Button>
-          </Flex>
-        ))}
-      </VStack>
-    </Box>
+    <>
+      <Box maxW="md" mx="auto" mt={0}>
+        <Header />
+        <Flex mb={4}>
+          <Input placeholder="Add a new todo" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} mr={2} />
+          <Button colorScheme="blue" onClick={addTodo}>
+            Add
+          </Button>
+        </Flex>
+        <VStack spacing={2} align="start">
+          {todos.map((todo, index) => (
+            <Flex key={index} align="center" justify="space-between" w="full">
+              <Checkbox isChecked={todo.completed} onChange={() => toggleTodo(index)} mr={2}>
+                <Text as={todo.completed ? "del" : "span"} color={todo.completed ? "gray.500" : "inherit"}>
+                  {todo.text}
+                </Text>
+              </Checkbox>
+              <Button size="sm" colorScheme="red" onClick={() => deleteTodo(index)}>
+                Delete
+              </Button>
+            </Flex>
+          ))}
+        </VStack>
+      </Box>
+      <Footer />
+    </>
   );
 };
 
