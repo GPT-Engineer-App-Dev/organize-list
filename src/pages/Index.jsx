@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Checkbox, Flex, Heading, Input, Text, VStack } from "@chakra-ui/react";
+import Header from "../components/Header";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -25,10 +26,8 @@ const TodoApp = () => {
   };
 
   return (
-    <Box maxW="md" mx="auto" mt={20}>
-      <Heading mb={6} textAlign="center">
-        Todo App
-      </Heading>
+    <Box maxW="md" mx="auto" mt={0}>
+      <Header />
       <Flex mb={4}>
         <Input placeholder="Add a new todo" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} mr={2} />
         <Button colorScheme="blue" onClick={addTodo}>
